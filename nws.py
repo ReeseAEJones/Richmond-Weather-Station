@@ -29,7 +29,20 @@ class NWS(object):
         Collects the raw alert data from the National Weather Service API.
         """
         # This function is a placeholder for future implementation
-        return self.get_raw_alert_count()
+        raw_alerts = self.get_raw_alert_count()
+        if raw_alerts is None:
+            return None
+
+        # Making an alerts data object and returning useful information
+        alerts_data = {
+            "total": raw_alerts.get("total", None),
+            "land": raw_alerts.get("land", None),
+            "marine": raw_alerts.get("marine", None),
+            "regions": raw_alerts.get("regions", None),
+            "areas": raw_alerts.get("areas", None)
+        }
+
+        return alerts_data
        
 
         
