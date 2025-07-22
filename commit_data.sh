@@ -16,6 +16,8 @@ case "$OSTYPE" in
         ;;
 esac
 
+python3 ./recorddata.py
+
 # Detect current branch (main, master, etc)
 branch=$(git rev-parse --abbrev-ref HEAD)
 
