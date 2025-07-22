@@ -3,23 +3,18 @@ import requests
 # An object to gather data from the National Weather Service (NWS) API
 class NWS(object):
     
-    def __init__(self, lat, long):
-        # Set the latitude and longitude for the location of interest
-        self.latiutude = lat
-        self.longitude = long
-
+    def __init__(self):
         self.base_url = "https://api.weather.gov/"
         self.headers = {
             "User-Agent": "WeatherDataCollector/1.0"
         }
                     
-
-    def get_raw_weather(self):
+    def get_raw_alert_count(self):
         """
         Fetches the current weather data from the National Weather Service API.
         Returns a dictionary with the weather data.
         """
-        url = f"{self.base_url}points/{self.latiutude},{self.longitude}"
+        url = f"{self.base_url}/alerts/active/count"
         
         try:
             response = requests.get(url, headers=self.headers)
@@ -29,11 +24,12 @@ class NWS(object):
             print(f"Error fetching weather data: {e}")
             return None
 
-    def get_weather(self):
+    def get_alert_count(self):
         """
-        Processes the raw weather data to extract relevant information.
-        Returns a JSON string with the current weather conditions.
+        Collects the raw alert data from the National Weather Service API.
         """
-        # TODO - Implement the logic to extract and format the weather data
-        return self.get_raw_weather()
+        # This function is a placeholder for future implementation
+        return self.get_raw_alert_count()
+       
+
         
